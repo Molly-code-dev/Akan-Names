@@ -21,3 +21,13 @@ fieldset {
     margin: 0;
     min-width: 0;
 }
+
+body:not(:-moz-handler-blocked) fieldset {
+    display: table-cell;
+}
+
+legend {
+    font-size: 1.5em;
+    padding: 5px;
+    display: table;
+}
