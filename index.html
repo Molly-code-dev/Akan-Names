@@ -1,106 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Akan Names - Ghanaian Names App</title>
-    <link rel="shortcut icon" href="images/favicon.ico">
-
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/images/akantitle.ico" />
+    <title>Akan Names</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento,Playfair+Display+SC,Sorts+Mill+Goudy &display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-        rel="stylesheet">
-    <link rel='stylesheet' href='css/styles.css'>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Gugi|Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-4 intro">
-                <h1 class="akan-heading">Akan <span class="heading-name">Names</span></h1>
-                <hr>
-                <div class="akan-description">
-                    <p class="fs12">A web application that takes a user's birthday and calculates the day of the week
-                        they were born and then depending on their gender outputs their Akan Name. Akan names are
-                        derived from Ghanian culture. Frequently in Ghana, children are given their first name as a 'day
-                        name' which corresponds to the day in the week they were born.</p>
-                    <p class="fs12">Here are some Ghanaian Names:</p>
-                    <div class="row ghanaian-names">
-                        <div class="col-md-6">
-                            <h4><i class="fa fa-female"></i>&nbsp;&nbsp;Female</h4>
-                            <ul class="fs11">
-                                <li>Sunday: Akosua</li>
-                                <li>Monday: Adwoa</li>
-                                <li>Tuesday: Abenaa</li>
-                                <li>Wednesday: Akua</li>
-                                <li>Thursday: Yaa</li>
-                                <li>Friday: Afua</li>
-                                <li>Saturday: Ama</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h4><i class="fa fa-male"></i>&nbsp;&nbsp; Male</h4>
-                            <ul class="fs11">
-                                <li>Sunday: Kwasi</li>
-                                <li>Monday: Kwadwo</li>
-                                <li>Tuesday: Kwabena</li>
-                                <li>Wednesday: Kwaku</li>
-                                <li>Thursday: Yaw</li>
-                                <li>Friday: Kofi</li>
-                                <li>Saturday: Kwame</li>
-                            </ul>
-                        </div>
+<body class="container-fluid" style="background-image:url(images/Be.jpg);">
+    <div id="heading">
+        <img src="images/akan.png" alt=" ">
+        <h1>Welcome To Akan Names</h1>
+        <h2 id="get">Get Your Akan Name Easy and Fast!!!!!!!</h2>
+    </div>
+    <div class="overlay">
+        <div class="container">
+            <h2>Enter Your Details Here!</h2>
+            <form name="myForm" class="form" onsubmit="validate();">
+                <div class="form-group">
+                    <label for="number">Year of Birth:</label>
+                    <input type="number" class="form-control" id="year"
+                        placeholder="Year of Birth Eg: 2019 if born in 2019" name="year">
+                </div>
+                <div class="form-group">
+                    <label for="month">Month of Birth:</label>
+                    <input type="number" class="form-control" id="month" placeholder="Month of Birth" name="month">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date of Birth:</label>
+                    <input type="number" class="form-control" id="date" placeholder="Date of Birth eg 05 for May"
+                        name="date">
+                </div>
+                <div class="form-group">
+                    <label for="month">Gender</label><br>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" id="male">&nbsp; Male
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" id="female">&nbsp; Female
+                        </label>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mt30 akan-form">
-                <h5>Please Enter Your Birthdate Here:</h5>
-                <div class="add-stylist-form">
-                    <form>
-                        <div class="form-group mb15">
-                            <label class="label">Birthday</label>
-                            <div class="input-group mb15">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" placeholder="mm/dd/yyyy" id="myBirthDate" class="form-control"
-                                    autocomplete="off">
-                            </div>
-                        </div>
-
-                        <div class="form-group mb15">
-                            <label class="label">Gender</label>
-                            <div class="rdio rdio-default fs11">
-                                <input type="radio" name="gender" id="male" value="Male">
-                                <label for="male">&nbsp;&nbsp;Male</label>
-                            </div>
-                            <div class="rdio rdio-default fs11">
-                                <input type="radio" name="gender" value="Female" id="female">
-                                <label for="female">&nbsp;&nbsp;Female</label>
-                            </div>
-                        </div>
-                        <button type="submit" onclick="getAkanName(); return false;" class="btn btn-primary btn-xs"><i
-                                class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;Get Akan Name</button>
-                        <button type="reset" onclick="clearAkanMessage(); return false;"
-                            class="btn btn-default btn-xs"><i class="fa fa-times"
-                                aria-hidden="true"></i>&nbsp;&nbsp;Cancel</button>
-                    </form>
-                </div>
-                <hr>
-                <div class="your-akan-name">
-                    <p id="message" class="output"></p>
-                </div>
-            </div>
-            <div class="col-md-2"></div>
+                <button type="submit" class="btn btn-primary" onclick="findName();">Get Name</button>
+                <br>
+            </form>
+            <p id="results"> </p>
         </div>
-
-        <footer class="footer">
-            <p>Powered by <a href="http://adzumi.co.ke/" target="_blank">Adzumi</a>. &copy; 2019 All Rights Reserved.
-                Akan Names Application.</p>
-        </footer>
     </div>
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/jquery.maskedinput.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <div class="card-deck">
+        <div class="card ">
+            <div class="card-body text-center">
+                <p class="card-text">Akan names are derived from Ghanian culture. Get your Akan name by filling the form
+                    above!</p>
+            </div>
+        </div>
+        <div class="card ">
+            <div class="card-body text-center">
+                <p class="card-text">Names are based on gender and the date you were born. <br>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-globe fa-stack-1x" style="color:rgb(188, 222, 252)"></i>
+                    </span><a href="http://www.afropedea.org/akan-names"> More info on Akan names</a>
+                </p>
+            </div>
+        </div>
+        <div class="card ">
+            <div class="card-body text-center">
+                <p class="card-text">Frequently in Ghana, children are given their first name as a 'day name'
+                    which corresponds to the day in the week they were born.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer ">
+        <div class="footer-copyright text-center py-3">Copyright © 2019:
+            <a href="https://github.com/Owiti-Charles"> Charles Owiti</a>
+        </div>
+    </footer>
+    <script src="javascript/script.js"></script>
 </body>
 
 </html>
