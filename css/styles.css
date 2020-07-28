@@ -3,6 +3,10 @@
     font-weight: bold;
 }
 
+ul {
+    line-height: 40px;
+}
+
 .container {
     width: 100%;
     position: absolute;
